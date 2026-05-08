@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco & Smart Tourism</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <nav class="navbar">
+        <div class="nav-brand">EcoTour</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="login.html" class="btn btn-outline" id="navLoginBtn">Login</a>
+            <a href="signup.html" class="btn btn-primary" id="navSignupBtn">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Discover the World Responsibly</h1>
+        <p>Connect with local experts for an unforgettable, eco-friendly travel experience.</p>
+        <div class="mt-2" id="heroActions">
+            <a href="signup.html" class="btn btn-primary">Get Started</a>
+            <a href="#features" class="btn btn-outline">Learn More</a>
+        </div>
+    </div>
+
+    <div class="container" id="features">
+        <h2 class="text-center mb-2">Why Choose EcoTour?</h2>
+        <div class="grid">
+            <div class="card text-center">
+                <h3>Local Experts</h3>
+                <p>Explore with guides who know the hidden gems and local culture inside out.</p>
+            </div>
+            <div class="card text-center">
+                <h3>Eco-Friendly</h3>
+                <p>Our guides prioritize sustainable practices to protect our beautiful planet.</p>
+            </div>
+            <div class="card text-center">
+                <h3>AI Assistant</h3>
+                <p>Have questions? Our smart travel companion is available 24/7.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chat-container" class="hidden">
+        <div id="chat-header">
+            <span>EcoTour AI Assistant</span>
+            <button id="chat-close">✕</button>
+        </div>
+        <div id="chat-box"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" placeholder="Type a message..." required />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div id="chat-toggle">💬</div>
+
+
+    <script src="js/auth.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                const role = localStorage.getItem('role');
+                const navLinks = document.getElementById('navLinks');
+                const heroActions = document.getElementById('heroActions');
+                
+                let dashboardLink = role === 'guide' ? 'guide-dashboard.html' : 'user-dashboard.html';
+                
+                navLinks.innerHTML = `
+                    <a href="${dashboardLink}">Dashboard</a>
+                    <a href="#" onclick="logout()" class="btn btn-outline">Logout</a>
+                `;
+
+                heroActions.innerHTML = `
+                    <a href="${dashboardLink}" class="btn btn-primary">Go to Dashboard</a>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

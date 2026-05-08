@@ -1,0 +1,11 @@
+◇ injecting env (6) from backend\.env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+--- Server Startup ---
+Environment Variables Loaded:
+PORT: 5000
+MONGO_URI: Loaded (hidden for security)
+JWT_SECRET: Loaded (hidden for security)
+GROQ_API_KEY: Loaded (hidden for security)
+Connecting to Mongo... (mongodb+srv://vignes...)
+✅ MongoDB connected successfully
+🤖 Groq AI initialized successfully
+🚀 Backend Server running on http://0.0.0.0:5000
