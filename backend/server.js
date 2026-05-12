@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
+
 require("dotenv").config();
 
 const app = express();
@@ -25,12 +27,15 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/travel", travelRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 
-// Home Route
+// Serve Frontend Files
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+// Homepage Route
 app.get("/", (req, res) => {
-  res.send("🌍 Eco Tourism AI Platform Backend Running 🚀");
+  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
 });
 
-// 404 Error Handler
+// 404 Handler
 app.use((req, res) => {
   res.status(404).json({
     reply: "Endpoint not found. Please check your API URL.",
